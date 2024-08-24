@@ -1,7 +1,12 @@
 <template>
   <v-app>
     <div class="d-flex content">
-      <game-map :units="state.units" :orders="state.orders" :readonly="readonly" @click="click" />
+      <game-map
+        :units="state.units"
+        :orders="state.orders"
+        :readonly="readonly"
+        @click="click"
+      />
 
       <v-spacer class="d-flex flex-column">
         <div class="section d-flex align-start">
@@ -17,7 +22,8 @@
                   text
                   color="primary"
                   @click="resolveRegionOptions(region)"
-                >{{ region.name }}</v-btn>
+                  >{{ region.name }}</v-btn
+                >
               </v-layout>
             </v-card-actions>
           </v-card>
@@ -30,7 +36,7 @@
               <span>Orders:</span>
             </div>
             <v-divider />
-            <pre class="grow ma-2 mx-3">{{ state.orders.join('\n') }}</pre>
+            <pre class="grow ma-2 mx-3">{{ state.orders.join("\n") }}</pre>
             <v-divider />
             <v-card-actions key="2">
               <v-btn
@@ -38,11 +44,24 @@
                 v-if="!readonly"
                 :disabled="state.orders.length == 0"
                 @click="resolve()"
-              >Resolve Orders</v-btn>
+                >Resolve Orders</v-btn
+              >
               <v-btn color="primary" v-else @click="restore()">Restore</v-btn>
               <v-spacer />
-              <v-btn color="secondary" text v-if="index > 0" @click="preview(index - 1)">Back</v-btn>
-              <v-btn color="secondary" text v-if="readonly" @click="preview(index + 1)">Next</v-btn>
+              <v-btn
+                color="secondary"
+                text
+                v-if="index > 0"
+                @click="preview(index - 1)"
+                >Back</v-btn
+              >
+              <v-btn
+                color="secondary"
+                text
+                v-if="readonly"
+                @click="preview(index + 1)"
+                >Next</v-btn
+              >
               <v-btn color="info" text outlined @click="help = true">
                 <v-icon>help</v-icon>
               </v-btn>
@@ -61,7 +80,8 @@
                   text
                   color="primary"
                   @click="setUnitTeam(team)"
-                >{{ team }}</v-btn>
+                  >{{ team }}</v-btn
+                >
               </v-layout>
             </v-card-actions>
           </v-card>
@@ -72,15 +92,22 @@
             </v-card-title>
             <v-card-actions key="4">
               <v-layout justify-space-around>
-                <v-btn text color="primary" @click="setUnitType(false)">Army</v-btn>
-                <v-btn text color="primary" @click="setUnitType(true)">Fleet</v-btn>
+                <v-btn text color="primary" @click="setUnitType(false)"
+                  >Army</v-btn
+                >
+                <v-btn text color="primary" @click="setUnitType(true)"
+                  >Fleet</v-btn
+                >
               </v-layout>
             </v-card-actions>
           </v-card>
 
           <v-card v-else-if="build.orderType === null" class="ma-3">
             <v-card-title class="title">
-              <span>What order for the {{ getUnitTypeString(build.unitType) }} in {{ build.unitRegion.name }}?</span>
+              <span
+                >What order for the {{ getUnitTypeString(build.unitType) }} in
+                {{ build.unitRegion.name }}?</span
+              >
             </v-card-title>
             <v-card-text class="text--primary">
               <p>Left click to give a move or hold order</p>
@@ -124,9 +151,20 @@
         </v-card-title>
         <v-card-text class="text--primary">
           <p>The list of orders is in the top right.</p>
-          <p>Click on a region to place a unit or give orders. Prompts will appear on the right to give the unit a type, team, and orders.</p>
-          <p>Once all orders are registered, click resolve orders to process the turn. Dislodged units and unsuccessful orders will be listed in the bottom right.</p>
-          <p>Use the back and next buttons to see previous turns. While viewing a previous game state, click restore to revert to it and erase the history past that point</p>
+          <p>
+            Click on a region to place a unit or give orders. Prompts will
+            appear on the right to give the unit a type, team, and orders.
+          </p>
+          <p>
+            Once all orders are registered, click resolve orders to process the
+            turn. Dislodged units and unsuccessful orders will be listed in the
+            bottom right.
+          </p>
+          <p>
+            Use the back and next buttons to see previous turns. While viewing a
+            previous game state, click restore to revert to it and erase the
+            history past that point
+          </p>
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -134,16 +172,32 @@
 </template>
 
 <script>
-import { resolve, UnitType, Unit, MoveOrder, HoldOrder, ConvoyOrder, SupportOrder, maps, Region } from 'diplomacy-common';
+import {
+  resolve,
+  UnitType,
+  Unit,
+  MoveOrder,
+  HoldOrder,
+  ConvoyOrder,
+  SupportOrder,
+  maps,
+  Region,
+} from "diplomacy-common";
 
-import vuetify from '@/plugins/vuetify';
+import vuetify from "@/plugins/vuetify";
 
-import GameMap from './GameMap';
+import GameMap from "./GameMap";
+
+import { allRegions } from "../data";
+
+import gameData from "../data/game-data.json";
+
+import { convertDataToUnits } from "../utils/data";
 
 export default {
   vuetify,
 
-  name: 'app',
+  name: "app",
 
   components: {
     GameMap,
@@ -152,7 +206,15 @@ export default {
   data() {
     return {
       UnitType,
-      teams: ['England', 'France', 'Germany', 'Russia', 'Austria', 'Italy', 'Turkey'],
+      teams: [
+        "England",
+        "France",
+        "Germany",
+        "Russia",
+        "Austria",
+        "Italy",
+        "Turkey",
+      ],
 
       help: false,
 
@@ -167,35 +229,54 @@ export default {
       },
 
       index: 0,
-      history: [{
-        units: [],
-        orders: [],
-        results: '',
-      }],
+      history: [
+        {
+          units: [],
+          orders: [],
+          results: "",
+        },
+      ],
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      const unitObjects = convertDataToUnits(gameData);
+      const units = unitObjects.map((o) => new Unit(o.region, o.type, o.team));
+      this.state.units = units;
+    }, 200);
   },
 
   computed: {
     canConvoy() {
-      if (this.unit == null)
-        return false;
+      if (this.unit == null) return false;
 
-      return this.build.orderType == 'support'
-        && this.unit.region.type == UnitType.Water
-        && this.build.orderRegion.type == UnitType.Land;
+      return (
+        this.build.orderType == "support" &&
+        this.unit.region.type == UnitType.Water &&
+        this.build.orderRegion.type == UnitType.Land
+      );
     },
 
     unit() {
-      if (this.build.unitRegion === null)
-        return null;
+      if (this.build.unitRegion === null) return null;
 
-      let unit = this.state.units.find(o => Region.areEqual(o.region, this.build.unitRegion));
+      let unit = this.state.units.find((o) =>
+        Region.areEqual(o.region, this.build.unitRegion)
+      );
       if (unit) return unit;
 
-      if (this.build.unitRegion === null || this.build.unitType === null || this.build.unitTeam === null)
+      if (
+        this.build.unitRegion === null ||
+        this.build.unitType === null ||
+        this.build.unitTeam === null
+      )
         return null;
 
-      unit = new Unit(this.build.unitRegion, this.build.unitType, this.build.unitTeam);
+      unit = new Unit(
+        this.build.unitRegion,
+        this.build.unitType,
+        this.build.unitTeam
+      );
       this.state.units.push(unit);
       return unit;
     },
@@ -206,7 +287,7 @@ export default {
 
     readonly() {
       return this.index + 1 != this.history.length;
-    }
+    },
   },
 
   methods: {
@@ -217,30 +298,33 @@ export default {
     async click([region, button, pos]) {
       if (this.build.unitRegion === null) {
         if (button == 2) {
-          let i = this.state.units.findIndex(o => Region.areSame(o.region, region));
+          let i = this.state.units.findIndex((o) =>
+            Region.areSame(o.region, region)
+          );
           if (i < 0) return;
 
           let unit = this.state.units.splice(i, 1)[0];
 
-          let i2 = this.state.orders.findIndex(o => o.unit == unit);
+          let i2 = this.state.orders.findIndex((o) => o.unit == unit);
           if (i2 < 0) return this.reset();
 
           this.state.orders.splice(i2, 1);
           return this.reset();
         }
 
-        let unit = this.state.units.find(o => Region.areSame(o.region, region));
+        let unit = this.state.units.find((o) =>
+          Region.areSame(o.region, region)
+        );
         if (unit == null) {
           region = await this.resolveRegionOptions(region);
           this.build.unitRegion = region;
-          if (!region.isShore)
-            this.build.unitType = region.type;
+          if (!region.isShore) this.build.unitType = region.type;
           else if (region.attached.size > 0)
             this.build.unitType = UnitType.Water;
           return;
         }
 
-        let old = this.state.orders.findIndex(o => o.unit == unit);
+        let old = this.state.orders.findIndex((o) => o.unit == unit);
         if (old >= 0) this.state.orders.splice(old, 1);
 
         this.build.unitRegion = unit.region;
@@ -255,14 +339,20 @@ export default {
         }
 
         if (button == 0) {
-          if (this.build.orderType == 'convoy') {
-            return this.emit(new ConvoyOrder(this.unit, this.build.orderRegion, region));
-          } else if (this.build.orderType == 'support') {
+          if (this.build.orderType == "convoy") {
+            return this.emit(
+              new ConvoyOrder(this.unit, this.build.orderRegion, region)
+            );
+          } else if (this.build.orderType == "support") {
             if (Region.areSame(region, this.build.orderRegion)) {
-              return this.emit(new SupportOrder(this.unit, this.build.orderRegion));
+              return this.emit(
+                new SupportOrder(this.unit, this.build.orderRegion)
+              );
             } else {
               region = await this.resolveRegionOptions(region);
-              return this.emit(new SupportOrder(this.unit, this.build.orderRegion, region));
+              return this.emit(
+                new SupportOrder(this.unit, this.build.orderRegion, region)
+              );
             }
           } else {
             if (this.unit.type == UnitType.Water)
@@ -272,11 +362,14 @@ export default {
         }
 
         if (button == 2) {
-          if (this.canConvoy && Region.areSame(this.build.orderRegion, region)) {
-            this.build.orderType = 'convoy';
+          if (
+            this.canConvoy &&
+            Region.areSame(this.build.orderRegion, region)
+          ) {
+            this.build.orderType = "convoy";
             this.build.orderRegion = region;
           } else {
-            this.build.orderType = 'support';
+            this.build.orderType = "support";
             this.build.orderRegion = region;
           }
         }
@@ -300,22 +393,19 @@ export default {
     },
 
     getUnitTypeString(val) {
-      if (val === UnitType.Water)
-        return 'fleet';
+      if (val === UnitType.Water) return "fleet";
 
-      if (val === UnitType.Land)
-        return 'army';
+      if (val === UnitType.Land) return "army";
 
-      return '?';
+      return "?";
     },
 
     resolveRegionOptions(region) {
       if (this.build.regionOptions === null) {
-        if (region.attached.size == 0)
-          return region;
+        if (region.attached.size == 0) return region;
 
         this.build.regionOptions = [region, ...region.attached];
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
           this.regionResolve = resolve;
         });
       } else {
@@ -330,7 +420,7 @@ export default {
       let newResults = [];
 
       for (let unit of this.state.units) {
-        let order = orders.find(o => o.unit == unit);
+        let order = orders.find((o) => o.unit == unit);
         if (order) continue;
 
         orders.push(new HoldOrder(unit));
@@ -351,11 +441,15 @@ export default {
         if (i < 0) debugger;
 
         newUnits.splice(i, 1);
-        newResults.push(`The ${this.getUnitTypeString(unit.type)} in ${unit.region.name} was evicted`);
+        newResults.push(
+          `The ${this.getUnitTypeString(unit.type)} in ${
+            unit.region.name
+          } was evicted`
+        );
       }
 
       for (let [order, reason] of result.reasons) {
-        if (newResults.length > 0) newResults.push('');
+        if (newResults.length > 0) newResults.push("");
         newResults.push(`${order}: ${reason}`);
       }
 
@@ -363,7 +457,7 @@ export default {
       this.history.push({
         orders: [],
         units: newUnits,
-        results: newResults.join('\n'),
+        results: newResults.join("\n"),
       });
     },
 

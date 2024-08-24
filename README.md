@@ -17,3 +17,9 @@ Run as `node . run` to run all the saved data against the orders resolver to com
 ### web app:
 
 Web interface to input orders to the orders resolver with a fancy interface.
+
+In common run
+`npm link`
+
+In webapp run
+`npm link diplomacy-common`
