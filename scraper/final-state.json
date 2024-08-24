@@ -1,17 +1,6 @@
 [
   {
     "region": {
-      "id": "HOL",
-      "name": "Holland",
-      "type": 0,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "GERMANY"
-  },
-  {
-    "region": {
       "id": "BEL",
       "name": "Belgium",
       "type": 0,
@@ -67,30 +56,8 @@
   },
   {
     "region": {
-      "id": "SWE",
-      "name": "Sweden",
-      "type": 0,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "GERMANY"
-  },
-  {
-    "region": {
       "id": "BUL",
       "name": "Bulgaria",
-      "type": 0,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "AUSTRIA"
-  },
-  {
-    "region": {
-      "id": "TYR",
-      "name": "Tyrolia",
       "type": 0,
       "attached": {},
       "adjacent": {}
@@ -108,17 +75,6 @@
     },
     "type": 0,
     "team": "FRANCE"
-  },
-  {
-    "region": {
-      "id": "HEL",
-      "name": "Helgoland Bight",
-      "type": 1,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "ENGLAND"
   },
   {
     "region": {
@@ -166,17 +122,6 @@
   },
   {
     "region": {
-      "id": "SER",
-      "name": "Serbia",
-      "type": 0,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "AUSTRIA"
-  },
-  {
-    "region": {
       "id": "AEG",
       "name": "Aegean Sea",
       "type": 1,
@@ -196,17 +141,6 @@
     },
     "type": 1,
     "team": "TURKEY"
-  },
-  {
-    "region": {
-      "id": "FIN",
-      "name": "Finland",
-      "type": 0,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "RUSSIA"
   },
   {
     "region": {
@@ -232,31 +166,9 @@
   },
   {
     "region": {
-      "id": "NAT",
-      "name": "North Atlantic Ocean",
-      "type": 1,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "FRANCE"
-  },
-  {
-    "region": {
       "id": "ADR",
       "name": "Adriatic Sea",
       "type": 1,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "ITALY"
-  },
-  {
-    "region": {
-      "id": "TUN",
-      "name": "Tunis",
-      "type": 0,
       "attached": {},
       "adjacent": {}
     },
@@ -276,17 +188,6 @@
   },
   {
     "region": {
-      "id": "GRE",
-      "name": "Greece",
-      "type": 0,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "TURKEY"
-  },
-  {
-    "region": {
       "id": "NWY",
       "name": "Norway",
       "type": 0,
@@ -294,17 +195,6 @@
       "adjacent": {}
     },
     "type": 0,
-    "team": "RUSSIA"
-  },
-  {
-    "region": {
-      "id": "CLY",
-      "name": "Clyde",
-      "type": 0,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
     "team": "RUSSIA"
   },
   {
@@ -364,6 +254,39 @@
   },
   {
     "region": {
+      "id": "HOL",
+      "name": "Holland",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "ENGLAND"
+  },
+  {
+    "region": {
+      "id": "CLY",
+      "name": "Clyde",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "ION",
+      "name": "Ionian Sea",
+      "type": 1,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "ITALY"
+  },
+  {
+    "region": {
       "id": "BUD",
       "name": "Budapest",
       "type": 0,
@@ -372,5 +295,60 @@
     },
     "type": 0,
     "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "GAL",
+      "name": "Galicia",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "VIE",
+      "name": "Vienna",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "SER",
+      "name": "Serbia",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "TURKEY"
+  },
+  {
+    "region": {
+      "id": "LVP",
+      "name": "Liverpool",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "SWE",
+      "name": "Sweden",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "RUSSIA"
   }
 ]

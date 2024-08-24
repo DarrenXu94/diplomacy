@@ -62,14 +62,6 @@ function run_game(id: number, turns: scrape.Turn[]) {
     let remote = scrape.parse_orders(game, turns[i].orders);
     let orders = remote.orders.slice();
 
-    // console.log(game);
-
-    if (i === turns.length - 1) {
-      console.log("writing to file");
-      const newUnits = Array.from(game.units);
-      fs.writeFileSync("final-state.json", JSON.stringify(newUnits, null, 2));
-    }
-
     if (orders.find((o) => o.type == "move" && o.requireConvoy)) {
       ++totals.skipped_via;
       console.log(
@@ -115,10 +107,6 @@ function run_game(id: number, turns: scrape.Turn[]) {
       }
     }
 
-    // if (local.evicted.length == 0 != !turns[i].retreats) {
-    //     throw error(`Mismatch in game ${id}`);
-    // }
-
     if (local.evicted.length) {
       let evicted = new Set(local.evicted);
       let retreats = scrape.parse_retreats(local.evicted, turns[i].retreats!);
@@ -148,6 +136,15 @@ function run_game(id: number, turns: scrape.Turn[]) {
     for (let region of game.map.regions) {
       let units = [...game.units].filter((u) => u.region == region);
       if (units.length > 1) throw error(`Mismatch in game ${id}`);
+    }
+
+    if (i === turns.length - 1) {
+      console.log("writing to file");
+      const newUnits = Array.from(game.units);
+      fs.writeFileSync(
+        "../webapp/src/data/final-state.json",
+        JSON.stringify(newUnits, null, 2)
+      );
     }
   }
 
