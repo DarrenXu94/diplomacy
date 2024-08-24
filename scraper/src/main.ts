@@ -185,6 +185,7 @@ else if (op == "check") scrape.check();
 else if (op == "run") run();
 else if (op == "fetch") scrape.fetchGameData();
 // else if (op == "test") scrape.fetchSingleGame(MY_GAME_ID);
+else if (op == "key") scrape.getSessionKey();
 else if (op == "test") {
   const turns = scrape.fetchSingleGame(MY_GAME_ID);
   turns.then((res) => {

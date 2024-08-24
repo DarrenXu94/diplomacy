@@ -521,3 +521,36 @@ export async function fetchSingleGame(id: number) {
 
   return parsed;
 }
+
+export async function getSessionKey() {
+  console.log("get session key");
+  const options = {
+    uri: "https://www.playdiplomacy.com",
+    resolveWithFullResponse: true, // Needed to get the full response including headers
+    simple: false, // Prevents throwing an error on non-2xx responses
+  };
+
+  try {
+    const response = await request(options);
+    // The session key will be in the 'set-cookie' header
+    const cookies = response.headers["set-cookie"];
+    let sessionKey = null;
+
+    // Search for the PHPSESSID cookie
+    if (cookies) {
+      cookies.forEach((cookie) => {
+        if (cookie.startsWith("PHPSESSID=")) {
+          sessionKey = cookie.split(";")[0].split("=")[1];
+        }
+      });
+    }
+
+    if (sessionKey) {
+      console.log("Session Key:", sessionKey);
+    } else {
+      console.log("Session Key not found");
+    }
+  } catch (err) {
+    console.error("Error:", err.message);
+  }
+}
