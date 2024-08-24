@@ -23,12 +23,15 @@ function hasSameId(setOfObjects, idToCheck) {
 }
 export function load() {
   const units = finalState.map((o) => {
-    const region = allRegions.find(
-      (r) =>
-        r.region.id === o.region.id || hasSameId(r.region.attached, o.region.id)
-    ).region;
+    const region = getRegionById(o.region.id);
 
     return new Unit(region, o.type, titleCase(o.team));
   });
   return units;
+}
+
+export function getRegionById(id: string) {
+  return allRegions.find(
+    (r) => r.region.id === id || hasSameId(r.region.attached, id)
+  ).region;
 }

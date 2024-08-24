@@ -47,6 +47,23 @@
                 >Resolve Orders</v-btn
               >
               <v-btn color="primary" v-else @click="restore()">Restore</v-btn>
+
+              <v-btn
+                color="primary"
+                v-if="!readonly"
+                :disabled="state.orders.length == 0"
+                @click="share()"
+                >Share Orders</v-btn
+              >
+
+              <v-btn
+                color="primary"
+                v-if="!readonly"
+                :disabled="state.orders.length == 0"
+                @click="resetOrders()"
+                >Reset Orders</v-btn
+              >
+
               <v-spacer />
               <v-btn
                 color="secondary"
@@ -188,7 +205,7 @@ import vuetify from "@/plugins/vuetify";
 
 import GameMap from "./GameMap";
 
-import { load } from "../utils/load";
+import { load, getRegionById } from "../utils/load";
 
 export default {
   vuetify,
@@ -239,6 +256,55 @@ export default {
       const units = load();
       this.state.units = units;
     }, 200);
+
+    const hash = window.location.hash.slice(1);
+
+    setTimeout(() => {
+      if (hash) {
+        try {
+          const orderHash = JSON.parse(atob(hash));
+
+          orderHash.forEach(async (o) => {
+            const region = getRegionById(o.unit.region.id);
+
+            const newRegion = await this.resolveRegionOptions(region);
+
+            let order;
+
+            if (o.type === "move") {
+              const target = getRegionById(o.target.id);
+              order = new MoveOrder(
+                new Unit(newRegion, o.unit.type, o.unit.team),
+                target,
+                o.requireConvoy
+              );
+            } else if (o.type === "hold") {
+              order = new HoldOrder(
+                new Unit(newRegion, o.unit.type, o.unit.team)
+              );
+            } else if (o.type === "support") {
+              const target = getRegionById(o.target.id);
+
+              order = new SupportOrder(
+                new Unit(newRegion, o.unit.type, o.unit.team),
+                target,
+                o.attack
+              );
+            } else if (o.type === "convoy") {
+              order = new ConvoyOrder(
+                new Unit(newRegion, o.unit.type, o.unit.team),
+                o.start,
+                o.end
+              );
+            }
+
+            this.emit(order);
+          });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }, 300);
   },
 
   computed: {
@@ -387,6 +453,10 @@ export default {
       this.reset();
     },
 
+    resetOrders() {
+      window.location = window.location.href.split("#")[0];
+    },
+
     getUnitTypeString(val) {
       if (val === UnitType.Water) return "fleet";
 
@@ -409,6 +479,14 @@ export default {
       }
     },
 
+    share() {
+      const encoded = btoa(JSON.stringify(this.state.orders));
+
+      window.location.hash = encoded;
+
+      window.navigator.clipboard.writeText(window.location.href);
+    },
+
     resolve() {
       let orders = [...this.state.orders];
       let newUnits = [...this.state.units];
@@ -424,7 +502,7 @@ export default {
       let result = resolve(orders);
 
       for (let move of result.resolved) {
-        let i = newUnits.indexOf(move.unit);
+        let i = newUnits.findIndex((o) => o.region.id == move.unit.region.id);
         if (i < 0) debugger;
 
         let moved = new Unit(move.target, move.unit.type, move.unit.team);

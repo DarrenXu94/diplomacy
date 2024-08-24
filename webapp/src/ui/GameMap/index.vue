@@ -6,12 +6,18 @@
         <span v-if="hoverOrder">: {{ hoverOrder }}</span>
         <span v-else-if="hoverUnit">: {{ hoverUnit.team }}</span>
       </v-card>
-      <v-card v-if="todo.length" class="ma-3 py-1 px-3">{{ todo[0].name }}</v-card>
+      <v-card v-if="todo.length" class="ma-3 py-1 px-3">{{
+        todo[0].name
+      }}</v-card>
     </div>
 
     <div class="overlay">
       <svg class="orders" :viewBox="viewBox">
-        <order v-for="order in orders" :key="order.unit.region.id" :order="order" />
+        <order
+          v-for="order in orders"
+          :key="order.unit.region.id"
+          :order="order"
+        />
       </svg>
     </div>
 
@@ -24,16 +30,16 @@
 </template>
 
 <script>
-import { maps, UnitType } from 'diplomacy-common';
+import { maps, UnitType } from "diplomacy-common";
 
-import { positions } from '@/data';
+import { positions } from "@/data";
 
-import Unit from './Unit';
-import Order from './Order';
-import canvas from './canvas';
+import Unit from "./Unit";
+import Order from "./Order";
+import canvas from "./canvas";
 
 export default {
-  name: 'game-map',
+  name: "game-map",
 
   components: {
     Unit,
@@ -50,7 +56,7 @@ export default {
     return {
       hoverRegion: null,
 
-      todo: [...maps.standard.map.regions].filter(a => !positions[a.id]),
+      todo: [...maps.standard.map.regions].filter((a) => !positions[a.id]),
     };
   },
 
@@ -60,18 +66,22 @@ export default {
     },
 
     hoverUnit() {
-      return this.hoverRegion && this.units.find(u => u.region == this.hoverRegion);
+      return (
+        this.hoverRegion && this.units.find((u) => u.region == this.hoverRegion)
+      );
     },
 
     hoverOrder() {
-      return this.hoverUnit && this.orders.find(u => u.unit == this.hoverUnit);
+      return (
+        this.hoverUnit && this.orders.find((u) => u.unit == this.hoverUnit)
+      );
     },
   },
 
   mounted() {
     canvas.run(this.$refs.canvas);
-    canvas.on('click', this.click);
-    canvas.on('hover', this.hover);
+    canvas.on("click", this.click);
+    canvas.on("hover", this.hover);
   },
 
   methods: {
@@ -91,9 +101,9 @@ export default {
         return;
       }
 
-      this.$emit('click', [region, button, pos]);
+      this.$emit("click", [region, button, pos]);
     },
-  }
+  },
 };
 </script>
 
