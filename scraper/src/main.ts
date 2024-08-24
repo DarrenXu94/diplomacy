@@ -62,6 +62,14 @@ function run_game(id: number, turns: scrape.Turn[]) {
     let remote = scrape.parse_orders(game, turns[i].orders);
     let orders = remote.orders.slice();
 
+    // console.log(game);
+
+    if (i === turns.length - 1) {
+      console.log("writing to file");
+      const newUnits = Array.from(game.units);
+      fs.writeFileSync("final-state.json", JSON.stringify(newUnits, null, 2));
+    }
+
     if (orders.find((o) => o.type == "move" && o.requireConvoy)) {
       ++totals.skipped_via;
       console.log(
@@ -173,10 +181,19 @@ x.devtoolsFormatters.push(formatter);
 
 let op = process.argv[2];
 
+const MY_GAME_ID = 221053;
+
 if (op == "scrape") scrape.run();
 else if (op == "check") scrape.check();
 else if (op == "run") run();
 else if (op == "fetch") scrape.fetchGameData();
-else {
+// else if (op == "test") scrape.fetchSingleGame(MY_GAME_ID);
+else if (op == "test") {
+  const turns = scrape.fetchSingleGame(MY_GAME_ID);
+  turns.then((res) => {
+    const gameFinal = run_game(MY_GAME_ID, res);
+    console.log(gameFinal);
+  });
+} else {
   console.log("unknown or missing command");
 }

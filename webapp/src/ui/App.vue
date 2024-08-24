@@ -188,11 +188,7 @@ import vuetify from "@/plugins/vuetify";
 
 import GameMap from "./GameMap";
 
-import { allRegions } from "../data";
-
-import gameData from "../data/game-data.json";
-
-import { convertDataToUnits } from "../utils/data";
+import { load } from "../utils/load";
 
 export default {
   vuetify,
@@ -240,8 +236,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      const unitObjects = convertDataToUnits(gameData);
-      const units = unitObjects.map((o) => new Unit(o.region, o.type, o.team));
+      const units = load();
       this.state.units = units;
     }, 200);
   },

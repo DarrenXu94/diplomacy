@@ -513,3 +513,25 @@ export async function fetchGameData() {
   console.log(inputs);
   fs.writeFileSync("game-data.json", JSON.stringify(inputs, null, 2));
 }
+
+export async function fetchSingleGame(id: number) {
+  const game = await get_game(id);
+  let data = write_game(game);
+  let parsed = read_game(data);
+  // console.log(JSON.stringify(parsed, null, 2));
+  // fs.writeFileSync(`game
+
+  // run the game
+  return parsed;
+  // let newGame = new GameState(maps.standard.map, []);
+
+  // const turns = parsed;
+
+  // const res = parse_orders(newGame, turns[0].orders);
+
+  // console.log(res);
+
+  // for (let i = 0; i < turns.length; ++i) {
+
+  // }
+}

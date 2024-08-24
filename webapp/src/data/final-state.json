@@ -1,0 +1,376 @@
+[
+  {
+    "region": {
+      "id": "HOL",
+      "name": "Holland",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "GERMANY"
+  },
+  {
+    "region": {
+      "id": "BEL",
+      "name": "Belgium",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "MUN",
+      "name": "Munich",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "GERMANY"
+  },
+  {
+    "region": {
+      "id": "MAR",
+      "name": "Marseilles",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "BUR",
+      "name": "Burgundy",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "RUM",
+      "name": "Rumania",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "SWE",
+      "name": "Sweden",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "GERMANY"
+  },
+  {
+    "region": {
+      "id": "BUL",
+      "name": "Bulgaria",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "TYR",
+      "name": "Tyrolia",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "PAR",
+      "name": "Paris",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "HEL",
+      "name": "Helgoland Bight",
+      "type": 1,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "ENGLAND"
+  },
+  {
+    "region": {
+      "id": "ENG",
+      "name": "English Channel",
+      "type": 1,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "DEN",
+      "name": "Denmark",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "GERMANY"
+  },
+  {
+    "region": {
+      "id": "RUH",
+      "name": "Ruhr",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "GERMANY"
+  },
+  {
+    "region": {
+      "id": "KIE",
+      "name": "Kiel",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "GERMANY"
+  },
+  {
+    "region": {
+      "id": "SER",
+      "name": "Serbia",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "AEG",
+      "name": "Aegean Sea",
+      "type": 1,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "TURKEY"
+  },
+  {
+    "region": {
+      "id": "CON",
+      "name": "Constantinople",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "TURKEY"
+  },
+  {
+    "region": {
+      "id": "FIN",
+      "name": "Finland",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "NTH",
+      "name": "North Sea",
+      "type": 1,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "ENGLAND"
+  },
+  {
+    "region": {
+      "id": "EDI",
+      "name": "Edinburgh",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "ENGLAND"
+  },
+  {
+    "region": {
+      "id": "NAT",
+      "name": "North Atlantic Ocean",
+      "type": 1,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "ADR",
+      "name": "Adriatic Sea",
+      "type": 1,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "ITALY"
+  },
+  {
+    "region": {
+      "id": "TUN",
+      "name": "Tunis",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "ITALY"
+  },
+  {
+    "region": {
+      "id": "VEN",
+      "name": "Venice",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "GRE",
+      "name": "Greece",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "TURKEY"
+  },
+  {
+    "region": {
+      "id": "NWY",
+      "name": "Norway",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "CLY",
+      "name": "Clyde",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "ANK",
+      "name": "Ankara",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "NRG",
+      "name": "Norwegian Sea",
+      "type": 1,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "ARM",
+      "name": "Armenia",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "ROM",
+      "name": "Rome",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "ITALY"
+  },
+  {
+    "region": {
+      "id": "TRI",
+      "name": "Trieste",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "BUD",
+      "name": "Budapest",
+      "type": 0,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "AUSTRIA"
+  }
+]
