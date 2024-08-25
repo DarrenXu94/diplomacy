@@ -1,4 +1,5 @@
-import { Region, GameMap } from '../game';
+import { Region, GameMap } from "../game";
+export declare const supplyCenters: string[];
 export declare const map: GameMap;
 export declare const allRegions: {
     BOH: Region;

@@ -2,9 +2,10 @@ export declare class Region {
     readonly id: string;
     readonly name: string;
     readonly type: UnitType;
+    readonly supplyCenter: boolean;
     readonly attached: Set<Region>;
     readonly adjacent: Set<Region>;
-    constructor(id: string, name: string, type: UnitType);
+    constructor(id: string, name: string, type: UnitType, supplyCenter: boolean);
     readonly allAdjacent: Region[];
     readonly isShore: boolean;
     static areSame(lhs: Region, rhs: Region): boolean;
@@ -35,13 +36,13 @@ interface OrderBase<T extends string> {
     readonly type: T;
     readonly unit: Unit;
 }
-export declare class HoldOrder implements OrderBase<'hold'> {
+export declare class HoldOrder implements OrderBase<"hold"> {
     readonly unit: Unit;
     readonly type = "hold";
     constructor(unit: Unit);
     toString(): string;
 }
-export declare class MoveOrder implements OrderBase<'move'> {
+export declare class MoveOrder implements OrderBase<"move"> {
     readonly unit: Unit;
     readonly target: Region;
     readonly requireConvoy: boolean;
@@ -49,7 +50,7 @@ export declare class MoveOrder implements OrderBase<'move'> {
     constructor(unit: Unit, target: Region, requireConvoy: boolean);
     toString(): string;
 }
-export declare class SupportOrder implements OrderBase<'support'> {
+export declare class SupportOrder implements OrderBase<"support"> {
     readonly unit: Unit;
     readonly target: Region;
     readonly attack?: Region | undefined;
@@ -57,7 +58,7 @@ export declare class SupportOrder implements OrderBase<'support'> {
     constructor(unit: Unit, target: Region, attack?: Region | undefined);
     toString(): string;
 }
-export declare class ConvoyOrder implements OrderBase<'convoy'> {
+export declare class ConvoyOrder implements OrderBase<"convoy"> {
     readonly unit: Unit;
     readonly start: Region;
     readonly end: Region;

@@ -1,3 +1,5 @@
+Forked from https://github.com/mfro/diplomacy
+
 ### common:
 
 `game.ts` : Structures to define game map and game state including regions and units.

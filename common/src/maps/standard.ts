@@ -1,127 +1,164 @@
-import { Region, GameMap, UnitType } from '../game';
+import { Region, GameMap, UnitType } from "../game";
 
 const LAND = UnitType.Land;
 const WATER = UnitType.Water;
 
+export const supplyCenters = [
+  "RUM",
+  "BUL",
+  "SER",
+  "POR",
+  "SPA",
+  "SWE",
+  "NWY",
+  "DEN",
+  "HOL",
+  "BEL",
+  "TUN",
+  "GRE",
+  "BUD",
+  "TRI",
+  "VIE",
+  "EDI",
+  "LVP",
+  "LON",
+  "BRE",
+  "MAR",
+  "PAR",
+  "BER",
+  "KIE",
+  "MUN",
+  "NAP",
+  "ROM",
+  "VEN",
+  "MOS",
+  "STP",
+  "SEV",
+  "WAR",
+  "ANK",
+  "CON",
+  "SMY",
+];
+
 function n(id: string, name: string, type: UnitType): Region {
-    return new Region(id, name, type);
+  const isSupplyCenter = supplyCenters.includes(id);
+  return new Region(id, name, type, isSupplyCenter);
 }
 
 // austria
-let BOH = n('BOH', 'Bohemia', LAND);
-let BUD = n('BUD', 'Budapest', LAND);
-let GAL = n('GAL', 'Galicia', LAND);
-let TRI = n('TRI', 'Trieste', LAND);
-let TYR = n('TYR', 'Tyrolia', LAND);
-let VIE = n('VIE', 'Vienna', LAND);
+let BOH = n("BOH", "Bohemia", LAND);
+let BUD = n("BUD", "Budapest", LAND);
+let GAL = n("GAL", "Galicia", LAND);
+let TRI = n("TRI", "Trieste", LAND);
+let TYR = n("TYR", "Tyrolia", LAND);
+let VIE = n("VIE", "Vienna", LAND);
 
 // england
-let CLY = n('CLY', 'Clyde', LAND);
-let EDI = n('EDI', 'Edinburgh', LAND);
-let LVP = n('LVP', 'Liverpool', LAND);
-let LON = n('LON', 'London', LAND);
-let WAL = n('WAL', 'Wales', LAND);
-let YOR = n('YOR', 'Yorkshire', LAND);
+let CLY = n("CLY", "Clyde", LAND);
+let EDI = n("EDI", "Edinburgh", LAND);
+let LVP = n("LVP", "Liverpool", LAND);
+let LON = n("LON", "London", LAND);
+let WAL = n("WAL", "Wales", LAND);
+let YOR = n("YOR", "Yorkshire", LAND);
 
 // france
-let BRE = n('BRE', 'Brest', LAND);
-let BUR = n('BUR', 'Burgundy', LAND);
-let GAS = n('GAS', 'Gascony', LAND);
-let MAR = n('MAR', 'Marseilles', LAND);
-let PAR = n('PAR', 'Paris', LAND);
-let PIC = n('PIC', 'Picardy', LAND);
+let BRE = n("BRE", "Brest", LAND);
+let BUR = n("BUR", "Burgundy", LAND);
+let GAS = n("GAS", "Gascony", LAND);
+let MAR = n("MAR", "Marseilles", LAND);
+let PAR = n("PAR", "Paris", LAND);
+let PIC = n("PIC", "Picardy", LAND);
 
 // germany
-let BER = n('BER', 'Berlin', LAND);
-let KIE = n('KIE', 'Kiel', LAND);
-let MUN = n('MUN', 'Munich', LAND);
-let PRU = n('PRU', 'Prussia', LAND);
-let RUH = n('RUH', 'Ruhr', LAND);
-let SIL = n('SIL', 'Silesia', LAND);
+let BER = n("BER", "Berlin", LAND);
+let KIE = n("KIE", "Kiel", LAND);
+let MUN = n("MUN", "Munich", LAND);
+let PRU = n("PRU", "Prussia", LAND);
+let RUH = n("RUH", "Ruhr", LAND);
+let SIL = n("SIL", "Silesia", LAND);
 
 // italy
-let APU = n('APU', 'Apulia', LAND);
-let NAP = n('NAP', 'Naples', LAND);
-let PIE = n('PIE', 'Piedmont', LAND);
-let ROM = n('ROM', 'Rome', LAND);
-let TUS = n('TUS', 'Tuscany', LAND);
-let VEN = n('VEN', 'Venice', LAND);
+let APU = n("APU", "Apulia", LAND);
+let NAP = n("NAP", "Naples", LAND);
+let PIE = n("PIE", "Piedmont", LAND);
+let ROM = n("ROM", "Rome", LAND);
+let TUS = n("TUS", "Tuscany", LAND);
+let VEN = n("VEN", "Venice", LAND);
 
 // russia
-let FIN = n('FIN', 'Finland', LAND);
-let LVN = n('LVN', 'Livonia', LAND);
-let MOS = n('MOS', 'Moscow', LAND);
-let SEV = n('SEV', 'Sevastopol', LAND);
-let STP = n('STP', 'St. Petersburg', LAND);
-let UKR = n('UKR', 'Ukraine', LAND);
-let WAR = n('WAR', 'Warsaw', LAND);
+let FIN = n("FIN", "Finland", LAND);
+let LVN = n("LVN", "Livonia", LAND);
+let MOS = n("MOS", "Moscow", LAND);
+let SEV = n("SEV", "Sevastopol", LAND);
+let STP = n("STP", "St. Petersburg", LAND);
+let UKR = n("UKR", "Ukraine", LAND);
+let WAR = n("WAR", "Warsaw", LAND);
 
 // turkey
-let ANK = n('ANK', 'Ankara', LAND);
-let ARM = n('ARM', 'Armenia', LAND);
-let CON = n('CON', 'Constantinople', LAND);
-let SMY = n('SMY', 'Smyrna', LAND);
-let SYR = n('SYR', 'Syria', LAND);
+let ANK = n("ANK", "Ankara", LAND);
+let ARM = n("ARM", "Armenia", LAND);
+let CON = n("CON", "Constantinople", LAND);
+let SMY = n("SMY", "Smyrna", LAND);
+let SYR = n("SYR", "Syria", LAND);
 
 // neutral
-let ALB = n('ALB', 'Albania', LAND);
-let BEL = n('BEL', 'Belgium', LAND);
-let BUL = n('BUL', 'Bulgaria', LAND);
-let DEN = n('DEN', 'Denmark', LAND);
-let GRE = n('GRE', 'Greece', LAND);
-let HOL = n('HOL', 'Holland', LAND);
-let NWY = n('NWY', 'Norway', LAND);
-let NAF = n('NAF', 'North Africa', LAND);
-let POR = n('POR', 'Portugal', LAND);
-let RUM = n('RUM', 'Rumania', LAND);
-let SER = n('SER', 'Serbia', LAND);
-let SPA = n('SPA', 'Spain', LAND);
-let SWE = n('SWE', 'Sweden', LAND);
-let TUN = n('TUN', 'Tunis', LAND);
+let ALB = n("ALB", "Albania", LAND);
+let BEL = n("BEL", "Belgium", LAND);
+let BUL = n("BUL", "Bulgaria", LAND);
+let DEN = n("DEN", "Denmark", LAND);
+let GRE = n("GRE", "Greece", LAND);
+let HOL = n("HOL", "Holland", LAND);
+let NWY = n("NWY", "Norway", LAND);
+let NAF = n("NAF", "North Africa", LAND);
+let POR = n("POR", "Portugal", LAND);
+let RUM = n("RUM", "Rumania", LAND);
+let SER = n("SER", "Serbia", LAND);
+let SPA = n("SPA", "Spain", LAND);
+let SWE = n("SWE", "Sweden", LAND);
+let TUN = n("TUN", "Tunis", LAND);
 
 // water
-let ADR = n('ADR', 'Adriatic Sea', WATER);
-let AEG = n('AEG', 'Aegean Sea', WATER);
-let BAL = n('BAL', 'Baltic Sea', WATER);
-let BAR = n('BAR', 'Barents Sea', WATER);
-let BLA = n('BLA', 'Black Sea', WATER);
-let EAS = n('EAS', 'Eastern Mediterranean', WATER);
-let ENG = n('ENG', 'English Channel', WATER);
-let BOT = n('BOT', 'Gulf of Bothnia', WATER);
-let GOL = n('GOL', 'Gulf of Lyon', WATER);
-let HEL = n('HEL', 'Helgoland Bight', WATER);
-let ION = n('ION', 'Ionian Sea', WATER);
-let IRI = n('IRI', 'Irish Sea', WATER);
-let MID = n('MID', 'Mid-Atlantic Ocean', WATER);
-let NAT = n('NAT', 'North Atlantic Ocean', WATER);
-let NTH = n('NTH', 'North Sea', WATER);
-let NRG = n('NRG', 'Norwegian Sea', WATER);
-let SKA = n('SKA', 'Skagerrack', WATER);
-let TYN = n('TYN', 'Tyrrhenian Sea', WATER);
-let WES = n('WES', 'Western Mediterranean', WATER);
+let ADR = n("ADR", "Adriatic Sea", WATER);
+let AEG = n("AEG", "Aegean Sea", WATER);
+let BAL = n("BAL", "Baltic Sea", WATER);
+let BAR = n("BAR", "Barents Sea", WATER);
+let BLA = n("BLA", "Black Sea", WATER);
+let EAS = n("EAS", "Eastern Mediterranean", WATER);
+let ENG = n("ENG", "English Channel", WATER);
+let BOT = n("BOT", "Gulf of Bothnia", WATER);
+let GOL = n("GOL", "Gulf of Lyon", WATER);
+let HEL = n("HEL", "Helgoland Bight", WATER);
+let ION = n("ION", "Ionian Sea", WATER);
+let IRI = n("IRI", "Irish Sea", WATER);
+let MID = n("MID", "Mid-Atlantic Ocean", WATER);
+let NAT = n("NAT", "North Atlantic Ocean", WATER);
+let NTH = n("NTH", "North Sea", WATER);
+let NRG = n("NRG", "Norwegian Sea", WATER);
+let SKA = n("SKA", "Skagerrack", WATER);
+let TYN = n("TYN", "Tyrrhenian Sea", WATER);
+let WES = n("WES", "Western Mediterranean", WATER);
 
-let STP_NORTH = n('STPN', 'St. Petersburg (North Coast)', LAND);
-let STP_SOUTH = n('STPS', 'St. Petersburg (South Coast)', LAND);
+let STP_NORTH = n("STPN", "St. Petersburg (North Coast)", LAND);
+let STP_SOUTH = n("STPS", "St. Petersburg (South Coast)", LAND);
 
-let SPA_NORTH = n('SPAN', 'Spain (North Coast)', LAND);
-let SPA_SOUTH = n('SPAS', 'Spain (South Coast)', LAND);
+let SPA_NORTH = n("SPAN", "Spain (North Coast)", LAND);
+let SPA_SOUTH = n("SPAS", "Spain (South Coast)", LAND);
 
-let BUL_NORTH = n('BULE', 'Bulgaria (East Coast)', LAND);
-let BUL_SOUTH = n('BULS', 'Bulgaria (South Coast)', LAND);
+let BUL_NORTH = n("BULE", "Bulgaria (East Coast)", LAND);
+let BUL_SOUTH = n("BULS", "Bulgaria (South Coast)", LAND);
 
 function border(node: Region, adjacent: Region[]) {
-    for (let other of adjacent)
-        node.adjacent.add(other);
+  for (let other of adjacent) node.adjacent.add(other);
 }
 
 function attach(node: Region, attached: Region[]) {
-    let all = [node, ...attached];
-    for (let region of all) {
-        for (let other of all) {
-            if (other == region) continue;
-            region.attached.add(other);
-        }
+  let all = [node, ...attached];
+  for (let region of all) {
+    for (let other of all) {
+      if (other == region) continue;
+      region.attached.add(other);
     }
+  }
 }
 
 border(STP_NORTH, [BAR, NWY]);
@@ -213,6 +250,170 @@ border(SYR, [SMY, ARM, EAS]);
 border(BUD, [VIE, GAL, RUM, SER, TRI]);
 border(ANK, [BLA, ARM, SMY, CON]);
 
-export const map = new GameMap([BOH, BUD, GAL, TRI, TYR, VIE, CLY, EDI, LVP, LON, WAL, YOR, BRE, BUR, GAS, MAR, PAR, PIC, BER, KIE, MUN, PRU, RUH, SIL, APU, NAP, PIE, ROM, TUS, VEN, FIN, LVN, MOS, SEV, STP, UKR, WAR, ANK, ARM, CON, SMY, SYR, ALB, BEL, BUL, DEN, GRE, HOL, NWY, NAF, POR, RUM, SER, SPA, SWE, TUN, ADR, AEG, BAL, BAR, BLA, EAS, ENG, BOT, GOL, HEL, ION, IRI, MID, NAT, NTH, NRG, SKA, TYN, WES, STP_NORTH, STP_SOUTH, SPA_NORTH, SPA_SOUTH, BUL_NORTH, BUL_SOUTH]);
+export const map = new GameMap([
+  BOH,
+  BUD,
+  GAL,
+  TRI,
+  TYR,
+  VIE,
+  CLY,
+  EDI,
+  LVP,
+  LON,
+  WAL,
+  YOR,
+  BRE,
+  BUR,
+  GAS,
+  MAR,
+  PAR,
+  PIC,
+  BER,
+  KIE,
+  MUN,
+  PRU,
+  RUH,
+  SIL,
+  APU,
+  NAP,
+  PIE,
+  ROM,
+  TUS,
+  VEN,
+  FIN,
+  LVN,
+  MOS,
+  SEV,
+  STP,
+  UKR,
+  WAR,
+  ANK,
+  ARM,
+  CON,
+  SMY,
+  SYR,
+  ALB,
+  BEL,
+  BUL,
+  DEN,
+  GRE,
+  HOL,
+  NWY,
+  NAF,
+  POR,
+  RUM,
+  SER,
+  SPA,
+  SWE,
+  TUN,
+  ADR,
+  AEG,
+  BAL,
+  BAR,
+  BLA,
+  EAS,
+  ENG,
+  BOT,
+  GOL,
+  HEL,
+  ION,
+  IRI,
+  MID,
+  NAT,
+  NTH,
+  NRG,
+  SKA,
+  TYN,
+  WES,
+  STP_NORTH,
+  STP_SOUTH,
+  SPA_NORTH,
+  SPA_SOUTH,
+  BUL_NORTH,
+  BUL_SOUTH,
+]);
 
-export const allRegions = { BOH, BUD, GAL, TRI, TYR, VIE, CLY, EDI, LVP, LON, WAL, YOR, BRE, BUR, GAS, MAR, PAR, PIC, BER, KIE, MUN, PRU, RUH, SIL, APU, NAP, PIE, ROM, TUS, VEN, FIN, LVN, MOS, SEV, STP, UKR, WAR, ANK, ARM, CON, SMY, SYR, ALB, BEL, BUL, DEN, GRE, HOL, NWY, NAF, POR, RUM, SER, SPA, SWE, TUN, ADR, AEG, BAL, BAR, BLA, EAS, ENG, BOT, GOL, HEL, ION, IRI, MID, NAT, NTH, NRG, SKA, TYN, WES, STP_NORTH, STP_SOUTH, SPA_NORTH, SPA_SOUTH, BUL_NORTH, BUL_SOUTH };
+export const allRegions = {
+  BOH,
+  BUD,
+  GAL,
+  TRI,
+  TYR,
+  VIE,
+  CLY,
+  EDI,
+  LVP,
+  LON,
+  WAL,
+  YOR,
+  BRE,
+  BUR,
+  GAS,
+  MAR,
+  PAR,
+  PIC,
+  BER,
+  KIE,
+  MUN,
+  PRU,
+  RUH,
+  SIL,
+  APU,
+  NAP,
+  PIE,
+  ROM,
+  TUS,
+  VEN,
+  FIN,
+  LVN,
+  MOS,
+  SEV,
+  STP,
+  UKR,
+  WAR,
+  ANK,
+  ARM,
+  CON,
+  SMY,
+  SYR,
+  ALB,
+  BEL,
+  BUL,
+  DEN,
+  GRE,
+  HOL,
+  NWY,
+  NAF,
+  POR,
+  RUM,
+  SER,
+  SPA,
+  SWE,
+  TUN,
+  ADR,
+  AEG,
+  BAL,
+  BAR,
+  BLA,
+  EAS,
+  ENG,
+  BOT,
+  GOL,
+  HEL,
+  ION,
+  IRI,
+  MID,
+  NAT,
+  NTH,
+  NRG,
+  SKA,
+  TYN,
+  WES,
+  STP_NORTH,
+  STP_SOUTH,
+  SPA_NORTH,
+  SPA_SOUTH,
+  BUL_NORTH,
+  BUL_SOUTH,
+};

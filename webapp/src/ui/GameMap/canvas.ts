@@ -45,7 +45,11 @@ function run(canvas: HTMLCanvasElement) {
         context.fillStyle = "#388e3c";
       } else {
         if (t.region.type == UnitType.Land) {
-          context.fillStyle = "#98674c";
+          if (t.region.supplyCenter) {
+            context.fillStyle = "#bea98d";
+          } else {
+            context.fillStyle = "#f7dab5";
+          }
         } else {
           context.fillStyle = "#5C6BC0";
         }
