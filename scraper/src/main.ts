@@ -1,5 +1,7 @@
 import fs from "fs-extra";
 
+import path from "path";
+
 import {
   GameState,
   maps,
@@ -141,8 +143,11 @@ function run_game(id: number, turns: scrape.Turn[]) {
     if (i === turns.length - 1) {
       console.log("writing to file");
       const newUnits = Array.from(game.units);
+
+      const folderPath = path.join(__dirname, "../../webapp/src/data");
+
       fs.writeFileSync(
-        "../webapp/src/data/final-state.json",
+        folderPath + "/final-state.json",
         JSON.stringify(newUnits, null, 2)
       );
     }
@@ -190,7 +195,7 @@ else if (op == "test") {
   const turns = scrape.fetchSingleGame(MY_GAME_ID);
   turns.then((res) => {
     const gameFinal = run_game(MY_GAME_ID, res);
-    console.log(gameFinal);
+    // console.log(gameFinal);
   });
 } else {
   console.log("unknown or missing command");
