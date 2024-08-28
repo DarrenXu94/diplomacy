@@ -23,7 +23,7 @@ export interface Turn {
   builds?: Inputs;
 }
 
-const session_key = `o2ch9rm83tq85a6m9bon1vbd93`;
+const session_key = `vh015aq42h2g2htjikrlgf0ar2`;
 
 async function playdiplomacy(path: string) {
   let url = `https://www.playdiplomacy.com${path}`;
