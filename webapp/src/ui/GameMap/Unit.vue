@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import { Unit, UnitType } from 'diplomacy-common';
+import { Unit, UnitType } from "diplomacy-common";
 
-import { positions } from '@/data';
+import { positions } from "@/data";
 
-import * as images from './images';
+import * as images from "./images";
 
 export default {
-  name: 'unit',
+  name: "unit",
 
   props: {
     unit: Unit,
@@ -22,15 +22,15 @@ export default {
     return {
       images,
       style: {
-        top: positions[this.unit.region.id][1] + 'px',
-        left: positions[this.unit.region.id][0] + 'px',
+        top: positions[this.unit.region.id][1] - 10 + "px",
+        left: positions[this.unit.region.id][0] + "px",
       },
     };
   },
 
   computed: {
     image() {
-      let key1 = this.unit.type == UnitType.Water ? 'fleet' : 'army';
+      let key1 = this.unit.type == UnitType.Water ? "fleet" : "army";
       let key2 = this.unit.team;
       return this.images[key1][key2];
     },

@@ -31,7 +31,11 @@ export function load() {
 }
 
 export function getRegionById(id: string) {
-  return allRegions.find(
+  const reg = allRegions.find(
     (r) => r.region.id === id || hasSameId(r.region.attached, id)
-  ).region;
+  );
+
+  if (!reg) return null;
+
+  return reg.region;
 }
