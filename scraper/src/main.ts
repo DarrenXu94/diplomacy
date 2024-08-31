@@ -200,3 +200,19 @@ else if (op == "test") {
 } else {
   console.log("unknown or missing command");
 }
+
+// module.exports.runFunction = function (phpKey) {
+//   const turns = scrape.fetchSingleGame(MY_GAME_ID, phpKey);
+//   turns.then((res) => {
+//     const gameFinal = run_game(MY_GAME_ID, res);
+//   });
+// };
+
+const runFunction = function (phpKey) {
+  const turns = scrape.fetchSingleGame(MY_GAME_ID, phpKey);
+  turns.then((res) => {
+    const gameFinal = run_game(MY_GAME_ID, res);
+  });
+};
+
+export { runFunction };

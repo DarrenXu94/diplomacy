@@ -9,15 +9,17 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "dejavu-sans": "^1.0.0",
+    "diplomacy-common": "file:../common",
     "sass": "^1.77.8",
     "vue": "^2.6.10",
-    "vuetify": "^2.0.10",
-    "diplomacy-common": "file:../common"
+    "vuetify": "^2.0.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-typescript": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
+    "dotenv": "^16.4.5",
+    "request-promise-native": "^1.0.9",
     "sass-loader": "^7.1.0",
     "typescript": "^3.4.3",
     "vue-template-compiler": "^2.6.10"

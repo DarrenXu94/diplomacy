@@ -23,13 +23,13 @@ export interface Turn {
   builds?: Inputs;
 }
 
-const session_key = `h1anl9ihkiut3tb27577qnjn53`;
+const session_key = `mmqci5vml3dt5gnq5m0adign46`;
 
-async function playdiplomacy(path: string) {
+async function playdiplomacy(path: string, phpId: string) {
   let url = `https://www.playdiplomacy.com${path}`;
   try {
     let response = await request(url, {
-      headers: { cookie: `PHPSESSID=${session_key}` },
+      headers: { cookie: `PHPSESSID=${phpId}` },
       resolveWithFullResponse: true,
       followRedirect: false,
     });
@@ -42,23 +42,23 @@ async function playdiplomacy(path: string) {
   }
 }
 
-async function game_history(query: string) {
+async function game_history(query: string, phpId) {
   let cache = `cache/${query}`;
 
   let data;
   //   try {
   //     data = fs.readFileSync(cache, "utf8");
   //   } catch (e) {
-  data = await playdiplomacy(`/game_history.php?${query}`);
+  data = await playdiplomacy(`/game_history.php?${query}`, phpId);
   //   await fs.writeFile(cache, data, "utf8");
   //   }
 
   return data;
 }
 
-async function get_history(id: number, phase: string, date: number) {
+async function get_history(id: number, phase: string, date: number, phpId) {
   let query = `game_id=${id}&phase=${phase}&gdate=${date}`;
-  let data = await game_history(query);
+  let data = await game_history(query, phpId);
 
   let found = false;
   let inputs: Inputs = {};
@@ -81,9 +81,9 @@ async function get_history(id: number, phase: string, date: number) {
   return undefined;
 }
 
-export async function get_game(id: number) {
+export async function get_game(id: number, phpId) {
   let turns = [];
-  let history = await game_history(`game_id=${id}`);
+  let history = await game_history(`game_id=${id}`, phpId);
 
   for (let content of history.split("</br></br>")) {
     let date = turns.length;
@@ -100,7 +100,7 @@ export async function get_game(id: number) {
         throw error(`Failed to parse game history: ${id}`);
 
       let phase = match[2];
-      let inputs = await get_history(id, phase, date);
+      let inputs = await get_history(id, phase, date, phpId);
       if (inputs == null && phase != "O") continue;
 
       found = true;
@@ -127,7 +127,7 @@ export async function get_game(id: number) {
 
 export async function get_page(page: number) {
   let url = `/games.php?subpage=all_finished&variant-0=1&map_variant-0=1&current_page=${page}`;
-  let data = await playdiplomacy(url);
+  let data = await playdiplomacy(url, session_key);
 
   let ids = new Set<number>();
   for (let match of matches(
@@ -212,7 +212,7 @@ export async function run() {
       try {
         let outputFile = `data/${id}`;
         if (!fs.pathExistsSync(outputFile)) {
-          let game = await get_game(id);
+          let game = await get_game(id, session_key);
           let data = write_game(game);
           let parsed = read_game(data);
 
@@ -252,7 +252,7 @@ export async function check() {
     let game = read_game(fs.readFileSync(`data/${id}`));
 
     let turns = 0;
-    let history = await game_history(`game_id=${id}`);
+    let history = await game_history(`game_id=${id}`, session_key);
 
     for (let content of history.split("</br></br>")) {
       let found = false;
@@ -269,7 +269,7 @@ export async function check() {
     }
 
     if (turns != game.length) {
-      game = await get_game(parseInt(id));
+      game = await get_game(parseInt(id), session_key);
       if (turns != game.length) {
         throw error(`Mismatch: ${id} ${turns} ${game.length}`);
       }
@@ -283,7 +283,7 @@ export async function check() {
     }
 
     if (builds == 0 && retreats == 0) {
-      game = await get_game(parseInt(id));
+      game = await get_game(parseInt(id), session_key);
       console.log(
         `${(++count).toString().padStart(allIds.length.toString().length)} / ${
           allIds.length
@@ -509,13 +509,13 @@ export function parse_builds(game: GameState, inputs: Inputs) {
 
 export async function fetchGameData() {
   // get game history phase O
-  const inputs = await get_history(221053, "O", 0);
+  const inputs = await get_history(221053, "O", 0, session_key);
   console.log(inputs);
   fs.writeFileSync("game-data.json", JSON.stringify(inputs, null, 2));
 }
 
-export async function fetchSingleGame(id: number) {
-  const game = await get_game(id);
+export async function fetchSingleGame(id: number, phpId = session_key) {
+  const game = await get_game(id, phpId);
   let data = write_game(game);
   let parsed = read_game(data);
 
