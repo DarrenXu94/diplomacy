@@ -8,8 +8,8 @@ async function getSessionKey() {
     uri: "https://www.playdiplomacy.com/login.php",
     form: {
       // Replace these with your actual login credentials
-      username: process.env.USERNAME,
-      password: process.env.PASSWORD,
+      username: process.env.NETLIFY_USERNAME,
+      password: process.env.NETLIFY_PASSWORD,
     },
     resolveWithFullResponse: true, // Needed to get the full response including headers
     simple: false, // Prevents throwing an error on non-2xx responses
