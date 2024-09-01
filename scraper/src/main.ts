@@ -1,4 +1,4 @@
-import fs from "fs-extra";
+import fs from "fs";
 
 import path from "path";
 
@@ -156,26 +156,26 @@ function run_game(id: number, turns: scrape.Turn[]) {
   ++totals.checked;
 }
 
-async function run() {
-  fs.mkdirpSync("data");
-  fs.mkdirpSync("cache");
+// async function run() {
+//   fs.mkdirpSync("data");
+//   fs.mkdirpSync("cache");
 
-  // run_game(150168, scrape.read_game(fs.readFileSync('data/150168')));
+//   // run_game(150168, scrape.read_game(fs.readFileSync('data/150168')));
 
-  let allIds = fs.readdirSync("data");
+//   let allIds = fs.readdirSync("data");
 
-  for (let id of allIds) {
-    if (id == "known.json") continue;
-    if (ignored_games.has(parseInt(id))) continue;
+//   for (let id of allIds) {
+//     if (id == "known.json") continue;
+//     if (ignored_games.has(parseInt(id))) continue;
 
-    console.log(`processing game ${id}`);
+//     console.log(`processing game ${id}`);
 
-    let game = scrape.read_game(fs.readFileSync(`data/${id}`));
-    run_game(parseInt(id), game);
-  }
+//     let game = scrape.read_game(fs.readFileSync(`data/${id}`));
+//     run_game(parseInt(id), game);
+//   }
 
-  console.log(totals);
-}
+//   console.log(totals);
+// }
 
 let x = global as any;
 if (x.devtoolsFormatters == null) x.devtoolsFormatters = [];
@@ -187,7 +187,7 @@ const MY_GAME_ID = 221053;
 
 if (op == "scrape") scrape.run();
 else if (op == "check") scrape.check();
-else if (op == "run") run();
+// else if (op == "run") run();
 else if (op == "fetch") scrape.fetchGameData();
 // else if (op == "test") scrape.fetchSingleGame(MY_GAME_ID);
 else if (op == "key") scrape.getSessionKey();
