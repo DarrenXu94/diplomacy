@@ -1,6 +1,6 @@
 import zlib from "zlib";
 
-import fs from "fs-extra";
+// import fs from "fs-extra";
 import request from "request-promise-native";
 
 import { error, matches } from "./util";
@@ -170,138 +170,138 @@ export function write_game(turns: Turn[]) {
   return zlib.gzipSync(data);
 }
 
-export async function run() {
-  fs.mkdirpSync("data");
-  fs.mkdirpSync("cache");
+// export async function run() {
+//   fs.mkdirpSync("data");
+//   fs.mkdirpSync("cache");
 
-  let errors = 0;
-  let oldKnown;
-  let newKnown = { newest: 0, count: 0 };
-  try {
-    oldKnown = fs.readJSONSync("data/known.json") as typeof newKnown;
-    console.log(`known: ${oldKnown.newest} +${oldKnown.count}`);
-  } catch (e) {
-    oldKnown = null;
-  }
+//   let errors = 0;
+//   let oldKnown;
+//   let newKnown = { newest: 0, count: 0 };
+//   try {
+//     oldKnown = fs.readJSONSync("data/known.json") as typeof newKnown;
+//     console.log(`known: ${oldKnown.newest} +${oldKnown.count}`);
+//   } catch (e) {
+//     oldKnown = null;
+//   }
 
-  let skip = 0;
-  for (let i = 1; i <= 1000 && errors < 10; ++i) {
-    if (skip >= 15) {
-      skip -= 15;
-      continue;
-    }
+//   let skip = 0;
+//   for (let i = 1; i <= 1000 && errors < 10; ++i) {
+//     if (skip >= 15) {
+//       skip -= 15;
+//       continue;
+//     }
 
-    console.log(`fetching page ${i}`);
-    let ids = await get_page(i);
+//     console.log(`fetching page ${i}`);
+//     let ids = await get_page(i);
 
-    for (let id of ids) {
-      if (newKnown.newest == 0) newKnown.newest = id;
+//     for (let id of ids) {
+//       if (newKnown.newest == 0) newKnown.newest = id;
 
-      if (oldKnown && id == oldKnown.newest) {
-        skip = oldKnown.count;
-        newKnown.count += oldKnown.count;
-        oldKnown = null;
-      }
+//       if (oldKnown && id == oldKnown.newest) {
+//         skip = oldKnown.count;
+//         newKnown.count += oldKnown.count;
+//         oldKnown = null;
+//       }
 
-      if (skip >= 1) {
-        skip -= 1;
-        console.log(`skipping game ${id}`);
-        continue;
-      }
+//       if (skip >= 1) {
+//         skip -= 1;
+//         console.log(`skipping game ${id}`);
+//         continue;
+//       }
 
-      console.log(`fetching game ${id}`);
-      try {
-        let outputFile = `data/${id}`;
-        if (!fs.pathExistsSync(outputFile)) {
-          let game = await get_game(id, session_key);
-          let data = write_game(game);
-          let parsed = read_game(data);
+//       console.log(`fetching game ${id}`);
+//       try {
+//         let outputFile = `data/${id}`;
+//         if (!fs.pathExistsSync(outputFile)) {
+//           let game = await get_game(id, session_key);
+//           let data = write_game(game);
+//           let parsed = read_game(data);
 
-          if (JSON.stringify(parsed) != JSON.stringify(game))
-            throw error("game encoding failed");
+//           if (JSON.stringify(parsed) != JSON.stringify(game))
+//             throw error("game encoding failed");
 
-          fs.writeFileSync(outputFile, data);
-        }
+//           fs.writeFileSync(outputFile, data);
+//         }
 
-        if (errors == 0) {
-          ++newKnown.count;
-        }
-      } catch (e) {
-        ++errors;
-        fs.appendFileSync("errors.txt", `${id} ${e}`, "utf8");
-        console.error(id, e);
-      }
-    }
+//         if (errors == 0) {
+//           ++newKnown.count;
+//         }
+//       } catch (e) {
+//         ++errors;
+//         fs.appendFileSync("errors.txt", `${id} ${e}`, "utf8");
+//         console.error(id, e);
+//       }
+//     }
 
-    if (oldKnown == null) {
-      fs.writeJSONSync("data/known.json", newKnown);
-      console.log(`known: ${newKnown.newest} +${newKnown.count}`);
-    }
-  }
-}
+//     if (oldKnown == null) {
+//       fs.writeJSONSync("data/known.json", newKnown);
+//       console.log(`known: ${newKnown.newest} +${newKnown.count}`);
+//     }
+//   }
+// }
 
-export async function check() {
-  fs.mkdirpSync("data");
-  fs.mkdirpSync("cache");
+// export async function check() {
+//   fs.mkdirpSync("data");
+//   fs.mkdirpSync("cache");
 
-  let count = 0;
-  let allIds = fs.readdirSync("data");
+//   let count = 0;
+//   let allIds = fs.readdirSync("data");
 
-  for (let id of allIds) {
-    if (id == "known.json") continue;
+//   for (let id of allIds) {
+//     if (id == "known.json") continue;
 
-    let game = read_game(fs.readFileSync(`data/${id}`));
+//     let game = read_game(fs.readFileSync(`data/${id}`));
 
-    let turns = 0;
-    let history = await game_history(`game_id=${id}`, session_key);
+//     let turns = 0;
+//     let history = await game_history(`game_id=${id}`, session_key);
 
-    for (let content of history.split("</br></br>")) {
-      let found = false;
-      for (let _ of matches(
-        /<b><a href='game_history\.php\?game_id=(\d+)&phase=(\w)&gdate=(\d+)'>[^<]+<\/a><\/b>&nbsp;&nbsp;/,
-        content
-      )) {
-        found = true;
-        break;
-      }
+//     for (let content of history.split("</br></br>")) {
+//       let found = false;
+//       for (let _ of matches(
+//         /<b><a href='game_history\.php\?game_id=(\d+)&phase=(\w)&gdate=(\d+)'>[^<]+<\/a><\/b>&nbsp;&nbsp;/,
+//         content
+//       )) {
+//         found = true;
+//         break;
+//       }
 
-      if (!found) continue;
-      ++turns;
-    }
+//       if (!found) continue;
+//       ++turns;
+//     }
 
-    if (turns != game.length) {
-      game = await get_game(parseInt(id), session_key);
-      if (turns != game.length) {
-        throw error(`Mismatch: ${id} ${turns} ${game.length}`);
-      }
-    }
+//     if (turns != game.length) {
+//       game = await get_game(parseInt(id), session_key);
+//       if (turns != game.length) {
+//         throw error(`Mismatch: ${id} ${turns} ${game.length}`);
+//       }
+//     }
 
-    let builds = 0;
-    let retreats = 0;
-    for (let i = 0; i < game.length; ++i) {
-      if (game[i].builds) builds++;
-      if (game[i].retreats) retreats++;
-    }
+//     let builds = 0;
+//     let retreats = 0;
+//     for (let i = 0; i < game.length; ++i) {
+//       if (game[i].builds) builds++;
+//       if (game[i].retreats) retreats++;
+//     }
 
-    if (builds == 0 && retreats == 0) {
-      game = await get_game(parseInt(id), session_key);
-      console.log(
-        `${(++count).toString().padStart(allIds.length.toString().length)} / ${
-          allIds.length
-        } ${id} ${turns} *`
-      );
-    } else {
-      console.log(
-        `${(++count).toString().padStart(allIds.length.toString().length)} / ${
-          allIds.length
-        } ${id} ${turns}`
-      );
-    }
+//     if (builds == 0 && retreats == 0) {
+//       game = await get_game(parseInt(id), session_key);
+//       console.log(
+//         `${(++count).toString().padStart(allIds.length.toString().length)} / ${
+//           allIds.length
+//         } ${id} ${turns} *`
+//       );
+//     } else {
+//       console.log(
+//         `${(++count).toString().padStart(allIds.length.toString().length)} / ${
+//           allIds.length
+//         } ${id} ${turns}`
+//       );
+//     }
 
-    let data = write_game(game);
-    fs.writeFileSync(`data/${id}`, data);
-  }
-}
+//     let data = write_game(game);
+//     fs.writeFileSync(`data/${id}`, data);
+//   }
+// }
 
 export function parse_orders(game: GameState, inputs: Inputs) {
   let isNew = game.units.size == 0;
@@ -508,12 +508,12 @@ export function parse_builds(game: GameState, inputs: Inputs) {
   return builds;
 }
 
-export async function fetchGameData() {
-  // get game history phase O
-  const inputs = await get_history(221053, "O", 0, session_key);
-  console.log(inputs);
-  fs.writeFileSync("game-data.json", JSON.stringify(inputs, null, 2));
-}
+// export async function fetchGameData() {
+//   // get game history phase O
+//   const inputs = await get_history(221053, "O", 0, session_key);
+//   console.log(inputs);
+//   fs.writeFileSync("game-data.json", JSON.stringify(inputs, null, 2));
+// }
 
 export async function fetchSingleGame(id: number, phpId = session_key) {
   const game = await get_game(id, phpId);

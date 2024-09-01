@@ -186,10 +186,10 @@ let op = process.argv[2];
 
 const MY_GAME_ID = 221053;
 
-if (op == "scrape") scrape.run();
-else if (op == "check") scrape.check();
-// else if (op == "run") run();
-else if (op == "fetch") scrape.fetchGameData();
+if (op == "scrape") console.log("run");
+// else if (op == "check") scrape.check();
+// // else if (op == "run") run();
+// else if (op == "fetch") scrape.fetchGameData();
 // else if (op == "test") scrape.fetchSingleGame(MY_GAME_ID);
 else if (op == "key") scrape.getSessionKey();
 else if (op == "test") {
