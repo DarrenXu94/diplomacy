@@ -1,6 +1,5 @@
 const rp = require("request-promise-native");
 require("dotenv").config();
-const fs = require("fs");
 
 async function getSessionKey() {
   const options = {
@@ -32,7 +31,8 @@ async function getSessionKey() {
 
     if (sessionKey) {
       console.log("Session Key:", sessionKey);
-      fs.writeFileSync("sessionKey.txt", sessionKey);
+      // fs.writeFileSync("sessionKey.txt", sessionKey);
+      return sessionKey;
     } else {
       console.log("Session Key not found");
     }
