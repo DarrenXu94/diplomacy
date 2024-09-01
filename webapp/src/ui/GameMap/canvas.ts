@@ -41,9 +41,16 @@ function run(canvas: HTMLCanvasElement) {
 
   changed.push(...allRegions);
 
-  const regionsWithName = Object.keys(positions).map((r) => {
-    return { region: getRegionById(r), coordinates: positions[r] };
-  });
+  const regionsWithName = Object.keys(positions).reduce(
+    (acc, r) => {
+      const region = getRegionById(r);
+      if (region) {
+        acc.push({ region, coordinates: positions[r] });
+      }
+      return acc;
+    },
+    [] as { region: any; coordinates: number[] }[]
+  );
 
   function render() {
     changed.sort((a, b) => b.region.type - a.region.type);

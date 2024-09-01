@@ -20,7 +20,6 @@
         />
       </svg>
     </div>
-
     <div class="overlay">
       <unit v-for="unit in units" :key="unit.region.id" :unit="unit" />
     </div>

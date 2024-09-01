@@ -15,7 +15,7 @@ function titleCase(str) {
 
 function hasSameId(setOfObjects, idToCheck) {
   for (let obj of setOfObjects) {
-    if (obj.name === idToCheck) {
+    if (obj.id === idToCheck) {
       return true;
     }
   }
@@ -27,13 +27,21 @@ export function load() {
 
     return new Unit(region, o.type, titleCase(o.team));
   });
+
   return units;
 }
 
 export function getRegionById(id: string) {
-  const reg = allRegions.find(
-    (r) => r.region.id === id || hasSameId(r.region.attached, id)
-  );
+  const reg = allRegions.find((r) => r.region.id === id);
+
+  const isSubRegion = allRegions.find((r) => hasSameId(r.region.attached, id));
+  if (isSubRegion) {
+    for (let obj of isSubRegion.region.attached) {
+      if (obj.id === id) {
+        return obj;
+      }
+    }
+  }
 
   if (!reg) return null;
 
