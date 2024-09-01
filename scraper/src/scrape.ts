@@ -4,6 +4,7 @@ import fs from "fs-extra";
 import request from "request-promise-native";
 
 import { error, matches } from "./util";
+
 import {
   GameState,
   maps,
@@ -13,7 +14,7 @@ import {
   SupportOrder,
   ConvoyOrder,
   UnitType,
-} from "diplomacy-common";
+} from "../../common/out/index";
 
 export type Inputs = { [team: string]: string[] };
 

@@ -13,7 +13,8 @@ import {
   ConvoyOrder,
   UnitType,
   formatter,
-} from "diplomacy-common";
+} from "../../common/out/index.js";
+// } from "diplomacy-common";
 
 import * as scrape from "./scrape";
 import { error } from "./util";
