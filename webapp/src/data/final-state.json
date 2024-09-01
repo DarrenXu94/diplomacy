@@ -13,30 +13,6 @@
   },
   {
     "region": {
-      "id": "HEL",
-      "name": "Helgoland Bight",
-      "type": 1,
-      "supplyCenter": false,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "ENGLAND"
-  },
-  {
-    "region": {
-      "id": "SER",
-      "name": "Serbia",
-      "type": 0,
-      "supplyCenter": true,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "AUSTRIA"
-  },
-  {
-    "region": {
       "id": "BUR",
       "name": "Burgundy",
       "type": 0,
@@ -97,18 +73,6 @@
   },
   {
     "region": {
-      "id": "MUN",
-      "name": "Munich",
-      "type": 0,
-      "supplyCenter": true,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "FRANCE"
-  },
-  {
-    "region": {
       "id": "RUH",
       "name": "Ruhr",
       "type": 0,
@@ -145,42 +109,6 @@
   },
   {
     "region": {
-      "id": "BER",
-      "name": "Berlin",
-      "type": 0,
-      "supplyCenter": true,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "GERMANY"
-  },
-  {
-    "region": {
-      "id": "TYR",
-      "name": "Tyrolia",
-      "type": 0,
-      "supplyCenter": false,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "FRANCE"
-  },
-  {
-    "region": {
-      "id": "BOH",
-      "name": "Bohemia",
-      "type": 0,
-      "supplyCenter": false,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "AUSTRIA"
-  },
-  {
-    "region": {
       "id": "VIE",
       "name": "Vienna",
       "type": 0,
@@ -202,18 +130,6 @@
     },
     "type": 0,
     "team": "FRANCE"
-  },
-  {
-    "region": {
-      "id": "FIN",
-      "name": "Finland",
-      "type": 0,
-      "supplyCenter": false,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "RUSSIA"
   },
   {
     "region": {
@@ -265,30 +181,6 @@
   },
   {
     "region": {
-      "id": "MID",
-      "name": "Mid-Atlantic Ocean",
-      "type": 1,
-      "supplyCenter": false,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "FRANCE"
-  },
-  {
-    "region": {
-      "id": "TRI",
-      "name": "Trieste",
-      "type": 0,
-      "supplyCenter": true,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "ITALY"
-  },
-  {
-    "region": {
       "id": "ALB",
       "name": "Albania",
       "type": 0,
@@ -301,68 +193,8 @@
   },
   {
     "region": {
-      "id": "BULS",
-      "name": "Bulgaria (South Coast)",
-      "type": 0,
-      "supplyCenter": false,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "TURKEY"
-  },
-  {
-    "region": {
-      "id": "RUM",
-      "name": "Rumania",
-      "type": 0,
-      "supplyCenter": true,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "TURKEY"
-  },
-  {
-    "region": {
-      "id": "ION",
-      "name": "Ionian Sea",
-      "type": 1,
-      "supplyCenter": false,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "TURKEY"
-  },
-  {
-    "region": {
-      "id": "AEG",
-      "name": "Aegean Sea",
-      "type": 1,
-      "supplyCenter": false,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "TURKEY"
-  },
-  {
-    "region": {
       "id": "TUN",
       "name": "Tunis",
-      "type": 0,
-      "supplyCenter": true,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 1,
-    "team": "RUSSIA"
-  },
-  {
-    "region": {
-      "id": "DEN",
-      "name": "Denmark",
       "type": 0,
       "supplyCenter": true,
       "attached": {},
@@ -385,8 +217,128 @@
   },
   {
     "region": {
-      "id": "MOS",
-      "name": "Moscow",
+      "id": "DEN",
+      "name": "Denmark",
+      "type": 0,
+      "supplyCenter": true,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "ENGLAND"
+  },
+  {
+    "region": {
+      "id": "BER",
+      "name": "Berlin",
+      "type": 0,
+      "supplyCenter": true,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "MUN",
+      "name": "Munich",
+      "type": 0,
+      "supplyCenter": true,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "WES",
+      "name": "Western Mediterranean",
+      "type": 1,
+      "supplyCenter": false,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "TYR",
+      "name": "Tyrolia",
+      "type": 0,
+      "supplyCenter": false,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "TRI",
+      "name": "Trieste",
+      "type": 0,
+      "supplyCenter": true,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "AEG",
+      "name": "Aegean Sea",
+      "type": 1,
+      "supplyCenter": false,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "TURKEY"
+  },
+  {
+    "region": {
+      "id": "BUD",
+      "name": "Budapest",
+      "type": 0,
+      "supplyCenter": true,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "TURKEY"
+  },
+  {
+    "region": {
+      "id": "TYN",
+      "name": "Tyrrhenian Sea",
+      "type": 1,
+      "supplyCenter": false,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "TURKEY"
+  },
+  {
+    "region": {
+      "id": "ION",
+      "name": "Ionian Sea",
+      "type": 1,
+      "supplyCenter": false,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "TURKEY"
+  },
+  {
+    "region": {
+      "id": "SWE",
+      "name": "Sweden",
       "type": 0,
       "supplyCenter": true,
       "attached": {},
@@ -397,14 +349,50 @@
   },
   {
     "region": {
-      "id": "SEV",
-      "name": "Sevastopol",
+      "id": "LVN",
+      "name": "Livonia",
       "type": 0,
-      "supplyCenter": true,
+      "supplyCenter": false,
       "attached": {},
       "adjacent": {}
     },
     "type": 0,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "UKR",
+      "name": "Ukraine",
+      "type": 0,
+      "supplyCenter": false,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "RUSSIA"
+  },
+  {
+    "region": {
+      "id": "PRU",
+      "name": "Prussia",
+      "type": 0,
+      "supplyCenter": false,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "GERMANY"
+  },
+  {
+    "region": {
+      "id": "BAL",
+      "name": "Baltic Sea",
+      "type": 1,
+      "supplyCenter": false,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
     "team": "RUSSIA"
   }
 ]
