@@ -10,6 +10,12 @@ async function getSessionKey() {
       username: process.env.NETLIFY_USERNAME,
       password: process.env.NETLIFY_DIPLO_PW,
     },
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36",
+      "Accept-Language": "en-US,en;q=0.9",
+      Referer: "https://www.playdiplomacy.com/",
+    },
     resolveWithFullResponse: true, // Needed to get the full response including headers
     simple: false, // Prevents throwing an error on non-2xx responses
   };
