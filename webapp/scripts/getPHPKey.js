@@ -2,6 +2,7 @@ const rp = require("request-promise-native");
 require("dotenv").config();
 
 async function getSessionKey() {
+  console.log(process.env);
   const options = {
     method: "POST",
     uri: "https://www.playdiplomacy.com/login.php",
