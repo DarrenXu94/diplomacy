@@ -16,7 +16,7 @@ async function getSessionKey() {
 
   try {
     const response = await rp(options);
-    console.log("Response:", response, options);
+    console.log("Response:", response.headers);
     // The session key will be in the 'set-cookie' header
     const cookies = response.headers["set-cookie"];
     let sessionKey = null;
