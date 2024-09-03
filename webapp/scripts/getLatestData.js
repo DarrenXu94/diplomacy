@@ -1,4 +1,6 @@
-const { runFunction } = require("../../scraper/out/main");
+// const { runFunction } = require("../../scraper/out/main");
+
+const { runFunction } = require("./scrape");
 
 const { getSessionKey } = require("./getPHPKey");
 
