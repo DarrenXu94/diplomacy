@@ -1,19 +1,12 @@
-import typescript from 'rollup-plugin-typescript2';
+import typescript from "rollup-plugin-typescript2";
 
 module.exports = {
-    input: 'src/index.ts',
-    output: {
-        file: 'out/index.js',
-        format: 'cjs',
-        sourcemap: 'inline',
-    },
-    plugins: [
-        typescript(),
-    ],
-    external: [
-        'zlib',
-
-        'fs-extra',
-        'request-promise-native',
-    ],
+  input: "src/index.ts",
+  output: {
+    file: "out/index.js",
+    format: "cjs",
+    sourcemap: "inline",
+  },
+  plugins: [typescript()],
+  external: [],
 };

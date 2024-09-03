@@ -22,6 +22,7 @@
     "diplomacy-common": "file:../common",
     "fs-extra": "^8.1.0",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.7"
+    "request-promise-native": "^1.0.7",
+    "rollup-plugin-node-builtins": "^2.1.2"
   }
 }

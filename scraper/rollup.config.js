@@ -3,6 +3,7 @@ import { string } from "rollup-plugin-string";
 import json from "rollup-plugin-json";
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import builtins from "rollup-plugin-node-builtins";
 
 module.exports = {
   input: "src/main.ts",
@@ -12,6 +13,7 @@ module.exports = {
     sourcemap: "inline",
   },
   plugins: [
+    builtins(),
     typescript(),
     string({
       include: ["**/*.txt", "**/*.svg"],
@@ -22,5 +24,4 @@ module.exports = {
     }),
     commonjs(),
   ],
-  external: ["zlib", "fs-extra", "request-promise-native"],
 };
