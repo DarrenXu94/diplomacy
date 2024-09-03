@@ -447,7 +447,7 @@ function run_game(id, turns) {
       const folderPath = path.join(__dirname, "../src/data");
 
       fs.writeFileSync(
-        folderPath + "/final-state1.json",
+        folderPath + "/final-state.json",
         JSON.stringify(newUnits, null, 2)
       );
     }
