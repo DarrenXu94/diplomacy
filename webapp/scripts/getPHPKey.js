@@ -9,7 +9,7 @@ async function getSessionKey() {
     form: {
       // Replace these with your actual login credentials
       username: process.env.NETLIFY_USERNAME,
-      password: process.env.NETLIFY_PASSWORD,
+      password: process.env.NETLIFY_DIPLO_PASSWORD,
     },
     resolveWithFullResponse: true, // Needed to get the full response including headers
     simple: false, // Prevents throwing an error on non-2xx responses
