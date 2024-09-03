@@ -2,7 +2,6 @@ const rp = require("request-promise-native");
 require("dotenv").config();
 
 async function getSessionKey() {
-  console.log(process.env);
   const options = {
     method: "POST",
     uri: "https://www.playdiplomacy.com/login.php",
@@ -17,6 +16,7 @@ async function getSessionKey() {
 
   try {
     const response = await rp(options);
+    console.log("Response:", response, options);
     // The session key will be in the 'set-cookie' header
     const cookies = response.headers["set-cookie"];
     let sessionKey = null;
