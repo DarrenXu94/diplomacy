@@ -6,8 +6,8 @@ const { getSessionKey } = require("./getPHPKey");
 
 async function main() {
   const sessionKey = await getSessionKey();
-  console.log(sessionKey, "SESSION KEY");
-  // runFunction(sessionKey);
+  // console.log(sessionKey, "SESSION KEY");
+  runFunction(sessionKey);
 }
 
 main();
