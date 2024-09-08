@@ -169,18 +169,6 @@
   },
   {
     "region": {
-      "id": "ALB",
-      "name": "Albania",
-      "type": 0,
-      "supplyCenter": false,
-      "attached": {},
-      "adjacent": {}
-    },
-    "type": 0,
-    "team": "TURKEY"
-  },
-  {
-    "region": {
       "id": "TUS",
       "name": "Tuscany",
       "type": 0,
@@ -365,6 +353,54 @@
       "name": "Galicia",
       "type": 0,
       "supplyCenter": false,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "AUSTRIA"
+  },
+  {
+    "region": {
+      "id": "EDI",
+      "name": "Edinburgh",
+      "type": 0,
+      "supplyCenter": true,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "ENGLAND"
+  },
+  {
+    "region": {
+      "id": "MAR",
+      "name": "Marseilles",
+      "type": 0,
+      "supplyCenter": true,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 1,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "PAR",
+      "name": "Paris",
+      "type": 0,
+      "supplyCenter": true,
+      "attached": {},
+      "adjacent": {}
+    },
+    "type": 0,
+    "team": "FRANCE"
+  },
+  {
+    "region": {
+      "id": "VIE",
+      "name": "Vienna",
+      "type": 0,
+      "supplyCenter": true,
       "attached": {},
       "adjacent": {}
     },
